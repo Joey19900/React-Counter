@@ -5,14 +5,21 @@ function App() {
   const [counter, setCounter] = useState(0);
 
   const handleCount = (operator) => {
-    if (operator === "sum") {
-      return setCounter(counter + 1);
-    } else if (operator === "rest") {
-      return setCounter(counter - 1);
-    } else if (operator === "sum10") {
-      return setCounter(counter + 10);
-    } else if (operator === "rest10") {
-      return setCounter(counter - 10);
+    switch (operator) {
+      case "sum":
+        setCounter(counter + 1);
+        break;
+      case "rest":
+        setCounter(counter - 1);
+        break;
+      case "sum10":
+        setCounter(counter + 10);
+        break;
+      case "rest10":
+        setCounter(counter - 10);
+        break;
+      default:
+        setCounter(counter + 0);
     }
   };
 
