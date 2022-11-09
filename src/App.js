@@ -1,16 +1,19 @@
-//Preguntar como modificar letras
 import React from "react";
 import { useState } from "react";
 
 function App() {
   const [counter, setCounter] = useState(0);
 
-  const handleSum = () => {
-    setCounter(counter + 1);
-  };
-
-  const handleRest = () => {
-    setCounter(counter - 1);
+  const handleCount = (operator) => {
+    if (operator === "sum") {
+      return setCounter(counter + 1);
+    } else if (operator === "rest") {
+      return setCounter(counter - 1);
+    } else if (operator === "sum10") {
+      return setCounter(counter + 10);
+    } else if (operator === "rest10") {
+      return setCounter(counter - 10);
+    }
   };
 
   const resetCounter = () => {
@@ -20,12 +23,19 @@ function App() {
   return (
     <>
       <h1>React Counter</h1>
-      <button onClick={handleSum}> sum</button>
-      <p>{counter}</p>
+
+      <div style={{ display: "flex" }}>
+        <button onClick={() => handleCount("sum")}>sum</button>
+        <button onClick={() => handleCount("rest")}>rest</button>
+        <button onClick={() => handleCount("sum10")}>+10</button>
+        <button onClick={() => handleCount("rest10")}>-10</button>
+        <p>{counter}</p>
+      </div>
+
+      <br />
+      <br />
       <button onClick={resetCounter}>reset</button>
-      <button onClick={handleRest}>rest</button>
     </>
   );
 }
-
 export default App;
